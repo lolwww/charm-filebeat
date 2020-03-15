@@ -1,0 +1,110 @@
+"options":
+  "extra_packages":
+    "description": >
+      Space separated list of extra deb packages to install.
+    "type": "string"
+    "default": ""
+  "package_status":
+    "default": "install"
+    "type": "string"
+    "description": >
+      The status of service-affecting packages will be set to this
+      value in the dpkg database. Valid values are "install" and "hold".
+  "install_sources":
+    "description": >-
+      Elastic Beats apt repository
+    "type": "string"
+    "default": "deb https://artifacts.elastic.co/packages/6.x/apt stable main"
+  "install_keys":
+    "description": >-
+      Elastic Beats apt repository key
+    "type": "string"
+    "default": "D88E42B4"
+  "log_level":
+    "type": "string"
+    "default": "info"
+    "description": |
+      Beats log level. One of debug, info, warning, error, or critical:
+      https://www.elastic.co/guide/en/beats/filebeat/5.6/configuration-logging.html#level
+  "logging_to_syslog":
+    "type": "boolean"
+    "default": !!bool "true"
+    "description": |
+      Send beats logs to syslog:
+      https://www.elastic.co/guide/en/beats/filebeat/5.6/configuration-logging.html#_to_syslog
+  "logstash_hosts":
+    "type": "string"
+    "default": ""
+    "description": "A comma separated list of logstash output hosts in addition to\
+      \ those from relations."
+  "logstash_ssl_cert":
+    "type": "string"
+    "default": ""
+    "description": "Public SSL certificate data (base64 encoded) for connecting securely\
+      \ to logstash."
+  "logstash_ssl_key":
+    "type": "string"
+    "default": ""
+    "description": "Private SSL key data (base64 encoded) for connecting security\
+      \ to logstash."
+  "kafka_hosts":
+    "type": "string"
+    "default": ""
+    "description": "A comma separated list of kafka output hosts in addition to those\
+      \ from relations."
+  "kafka_topic":
+    "type": "string"
+    "default": "%{[type]}"
+    "description": "Topic name. Format strings are allowed."
+  "kafka_topics":
+    "type": "string"
+    "default": ""
+    "description": "Expert setting topics filter."
+  "kafka_version":
+    "type": "string"
+    "default": ""
+    "description": "Expert setting kafka version."
+  "logpath":
+    "type": "string"
+    "default": "/var/log/*.log /var/log/*/*.log"
+    "description": "Space separated log paths to monitor. Can contain wildcards."
+  "harvester_buffer_size":
+    "type": "int"
+    "default": !!int "16384"
+    "description": "Defines the buffer size every harvester uses when fetching the\
+      \ file"
+  "max_bytes":
+    "type": "int"
+    "default": !!int "10485760"
+    "description": "Maximum number of bytes a single log event can have. Default 10MB"
+  "exclude_files":
+    "type": "string"
+    "default": "[\"/filebeat.*\", \".*gz$\"]"
+    "description": |
+      A list of regular expressions to match the files that you want Filebeat to ignore:
+      https://www.elastic.co/guide/en/beats/filebeat/6.7/filebeat-input-log.html#filebeat-input-log-exclude-files"
+  "exclude_lines":
+    "type": "string"
+    "default": "[]"
+    "description": |
+      A list of regular expressions to match the lines that you want Filebeat to exclude:
+      https://www.elastic.co/guide/en/beats/filebeat/6.7/filebeat-input-log.html#filebeat-input-log-exclude-lines"
+  "fields":
+    "type": "string"
+    "default": ""
+    "description": "Space seperated list of key:value that the prospector will assign\
+      \ as field to each beat"
+  "kube_logs":
+    "type": "boolean"
+    "default": !!bool "false"
+    "description": |
+      Whether or not to include the Kubernetes audit log as well as any K8s metadata
+      when container logs are present on the system:
+      https://www.elastic.co/guide/en/beats/filebeat/6.7/add-kubernetes-metadata.html
+
+      Note: this option has no effect when related to a non Charmed Kubernetes charm.
+  "extra_inputs":
+    "type": "string"
+    "default": ""
+    "description": |
+      A YAML list which will be injected to define additional prospectors/inputs.

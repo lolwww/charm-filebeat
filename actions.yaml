@@ -1,0 +1,3 @@
+"reinstall":
+  "description": |
+    Purge an existing Filebeat package and reinstall it with the version available in the confugured repository.
